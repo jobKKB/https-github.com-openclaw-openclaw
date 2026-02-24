@@ -1,0 +1,24 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ocean-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d6fa4"/>
+      <stop offset="100%" stop-color="#0d3d6b"/>
+    </linearGradient>
+    <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1abc9c"/>
+      <stop offset="100%" stop-color="#1d6fa4"/>
+    </linearGradient>
+  </defs>
+  <!-- 圆形背景 -->
+  <circle cx="60" cy="60" r="56" fill="url(#ocean-gradient)"/>
+  <!-- 船帆 -->
+  <path d="M60 18 L60 75 L28 62 Z" fill="white" opacity="0.95"/>
+  <path d="M60 25 L60 75 L92 55 Z" fill="white" opacity="0.75"/>
+  <!-- 船体 -->
+  <path d="M25 78 Q60 92 95 78 L90 86 Q60 98 30 86 Z" fill="white" opacity="0.9"/>
+  <!-- 水波纹 -->
+  <path d="M15 95 Q30 90 45 95 Q60 100 75 95 Q90 90 105 95" stroke="url(#wave-gradient)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M20 103 Q37 98 54 103 Q71 108 88 103 Q97 100 105 103" stroke="url(#wave-gradient)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <!-- 中心标识 -->
+  <circle cx="60" cy="60" r="4" fill="#1abc9c" opacity="0.9"/>
+</svg>
