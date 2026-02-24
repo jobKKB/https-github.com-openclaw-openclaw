@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 chcp 65001 >nul 2>&1
-title èˆŸå²±è‡ªåŠ¨åŒ–å°åŠ©æ‰‹ - é‡å¯æœåŠ¡
+title ÖÛá·×Ô¶¯»¯Ğ¡ÖúÊÖ - ÖØÆô·şÎñ
 
 echo.
-echo  [é‡å¯] æ­£åœ¨é‡å¯èˆŸå²±è‡ªåŠ¨åŒ–å°åŠ©æ‰‹...
+echo  [ÖØÆô] ÕıÔÚÖØÆôÖÛá·×Ô¶¯»¯Ğ¡ÖúÊÖ...
 echo.
 
 set "INSTALL_DIR=%~dp0.."
@@ -12,9 +12,9 @@ pushd "%INSTALL_DIR%"
 set "INSTALL_DIR=%CD%"
 popd
 
-:: å…ˆåœæ­¢
+:: ÏÈÍ£Ö¹
 call "%INSTALL_DIR%\deploy\stop.bat"
 timeout /t 3 /nobreak >nul
 
-:: å†å¯åŠ¨
+:: ÔÙÆô¶¯
 call "%INSTALL_DIR%\deploy\start.bat"

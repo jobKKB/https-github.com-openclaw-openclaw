@@ -1,32 +1,32 @@
 @echo off
 setlocal enabledelayedexpansion
 chcp 65001 >nul 2>&1
-title å®‰è£… Visual C++ ç¼–è¯‘å·¥å…·
+title °²×° Visual C++ ±àÒë¹¤¾ß
 
 echo.
-echo  â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-echo  â•‘   å®‰è£… Visual C++ Build Tools                            â•‘
-echo  â•‘   ï¼ˆç¼–è¯‘åŸç”Ÿ Node.js æ¨¡å—å¿…éœ€ï¼‰                           â•‘
-echo  â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+echo  ¨X¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨[
+echo  ¨U   °²×° Visual C++ Build Tools                            ¨U
+echo  ¨U   £¨±àÒëÔ­Éú Node.js Ä£¿é±ØĞè£©                           ¨U
+echo  ¨^¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨a
 echo.
-echo  æ­¤å·¥å…·å°†å®‰è£… Microsoft Visual C++ Build Toolsã€‚
-echo  è¿™æ˜¯è¿è¡ŒèˆŸå²±åŠ©æ‰‹åŸç”Ÿæ¨¡å¼ï¼ˆæ— Dockerï¼‰çš„å¿…è¦ç»„ä»¶ã€‚
-echo  å®‰è£…å¤§å°çº¦ 3-5 GBï¼Œéœ€è¦ç½‘ç»œè¿æ¥ã€‚
+echo  ´Ë¹¤¾ß½«°²×° Microsoft Visual C++ Build Tools¡£
+echo  ÕâÊÇÔËĞĞÖÛá·ÖúÊÖÔ­ÉúÄ£Ê½£¨ÎŞDocker£©µÄ±ØÒª×é¼ş¡£
+echo  °²×°´óĞ¡Ô¼ 3-5 GB£¬ĞèÒªÍøÂçÁ¬½Ó¡£
 echo.
-echo  å¦‚æœæ‚¨å·²ç»å®‰è£…è¿‡ Visual Studio 2019/2022ï¼Œåˆ™æ— éœ€è¿è¡Œæ­¤è„šæœ¬ã€‚
+echo  Èç¹ûÄúÒÑ¾­°²×°¹ı Visual Studio 2019/2022£¬ÔòÎŞĞèÔËĞĞ´Ë½Å±¾¡£
 echo.
 
-set /p CONFIRM="  ç¡®è®¤å®‰è£…ï¼Ÿï¼ˆY/Nï¼‰ï¼š"
+set /p CONFIRM="  È·ÈÏ°²×°£¿£¨Y/N£©£º"
 if /i "%CONFIRM%" neq "Y" exit /b 0
 
 echo.
-echo  [1/2] æ£€æµ‹å®‰è£…æ–¹å¼...
+echo  [1/2] ¼ì²â°²×°·½Ê½...
 
-:: æ–¹æ³•1ï¼šwingetï¼ˆWindows 10 1709+ è‡ªå¸¦ï¼‰
+:: ·½·¨1£ºwinget£¨Windows 10 1709+ ×Ô´ø£©
 winget --version >nul 2>&1
 if %errorlevel% equ 0 (
-    echo  [â†“] é€šè¿‡ winget å®‰è£… VS Build Tools 2022...
-    echo  [i] æ­¤è¿‡ç¨‹éœ€è¦5-15åˆ†é’Ÿï¼Œè¯·å‹¿å…³é—­çª—å£...
+    echo  [¡ı] Í¨¹ı winget °²×° VS Build Tools 2022...
+    echo  [i] ´Ë¹ı³ÌĞèÒª5-15·ÖÖÓ£¬ÇëÎğ¹Ø±Õ´°¿Ú...
     winget install Microsoft.VisualStudio.2022.BuildTools ^
         --silent ^
         --accept-package-agreements ^
@@ -34,29 +34,29 @@ if %errorlevel% equ 0 (
         --override "--add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.Windows11SDK.22621 --includeRecommended --quiet --wait"
     
     if !errorlevel! equ 0 (
-        echo  [âœ“] å®‰è£…å®Œæˆï¼
-        echo  [i] è¯·é‡æ–°è¿è¡Œ start.bat
+        echo  [?] °²×°Íê³É£¡
+        echo  [i] ÇëÖØĞÂÔËĞĞ start.bat
         pause
         exit /b 0
     )
 )
 
-:: æ–¹æ³•2ï¼šç›´æ¥ä¸‹è½½å®‰è£…ç¨‹åº
-echo  [â†“] ä¸‹è½½ VS Build Tools å®‰è£…ç¨‹åº...
+:: ·½·¨2£ºÖ±½ÓÏÂÔØ°²×°³ÌĞò
+echo  [¡ı] ÏÂÔØ VS Build Tools °²×°³ÌĞò...
 set "VS_URL=https://aka.ms/vs/17/release/vs_buildtools.exe"
 set "VS_SAVE=%TEMP%\vs_buildtools.exe"
 
 powershell -Command "& { $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri '%VS_URL%' -OutFile '%VS_SAVE%' -UseBasicParsing }"
 if %errorlevel% neq 0 (
-    echo  [âœ—] ä¸‹è½½å¤±è´¥ï¼Œè¯·æ‰‹åŠ¨è®¿é—®ä»¥ä¸‹åœ°å€ä¸‹è½½ï¼š
+    echo  [?] ÏÂÔØÊ§°Ü£¬ÇëÊÖ¶¯·ÃÎÊÒÔÏÂµØÖ·ÏÂÔØ£º
     echo      https://aka.ms/vs/17/release/vs_buildtools.exe
     pause
     exit /b 1
 )
 
-echo  [â†“] å¯åŠ¨å®‰è£…ç¨‹åºï¼ˆè¯·åœ¨å¼¹å‡ºçš„çª—å£ä¸­å‹¾é€‰"C++æ¡Œé¢å¼€å‘"ï¼‰...
+echo  [¡ı] Æô¶¯°²×°³ÌĞò£¨ÇëÔÚµ¯³öµÄ´°¿ÚÖĞ¹´Ñ¡"C++×ÀÃæ¿ª·¢"£©...
 "%VS_SAVE%" --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --wait
 
 echo.
-echo  [âœ“] å®‰è£…å®Œæˆï¼è¯·é‡æ–°è¿è¡Œ start.bat
+echo  [?] °²×°Íê³É£¡ÇëÖØĞÂÔËĞĞ start.bat
 pause
