@@ -5,6 +5,7 @@ import { refreshChatAvatar } from "./app-chat.ts";
 import { renderUsageTab } from "./app-render-usage-tab.ts";
 import { renderChatControls, renderTab, renderThemeToggle } from "./app-render.helpers.ts";
 import type { AppViewState } from "./app-view-state.ts";
+import "./welcome.ts"; // 注册 zhoudai-welcome 自定义元素
 import { loadAgentFileContent, loadAgentFiles, saveAgentFile } from "./controllers/agent-files.ts";
 import { loadAgentIdentities, loadAgentIdentity } from "./controllers/agent-identity.ts";
 import { loadAgentSkills } from "./controllers/agent-skills.ts";
@@ -136,6 +137,15 @@ function resolveAssistantAvatarUrl(state: AppViewState): string | undefined {
 }
 
 export function renderApp(state: AppViewState) {
+  // ── 欢迎引导页拦截：首次访问时全屏显示，接受条款后才进入正式界面 ──
+  if (!state.welcomeAccepted) {
+    return html`
+      <zhoudai-welcome
+        .onAccept=${() => state.acceptWelcome()}
+      ></zhoudai-welcome>
+    `;
+  }
+
   const openClawVersion =
     (typeof state.hello?.server?.version === "string" && state.hello.server.version.trim()) ||
     state.updateAvailable?.currentVersion ||

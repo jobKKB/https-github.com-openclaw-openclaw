@@ -1,4 +1,5 @@
 const KEY = "zhoudai.control.settings.v1";
+const WELCOME_KEY = "zhoudai.welcome.accepted.v1";
 
 import { isSupportedLocale } from "../i18n/index.ts";
 import type { ThemeMode } from "./theme.ts";
@@ -88,4 +89,22 @@ export function loadSettings(): UiSettings {
 
 export function saveSettings(next: UiSettings) {
   localStorage.setItem(KEY, JSON.stringify(next));
+}
+
+/** 检测用户是否已接受欢迎条款 */
+export function loadWelcomeAccepted(): boolean {
+  try {
+    return localStorage.getItem(WELCOME_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+/** 保存用户已接受欢迎条款 */
+export function saveWelcomeAccepted() {
+  try {
+    localStorage.setItem(WELCOME_KEY, "true");
+  } catch {
+    // ignore
+  }
 }

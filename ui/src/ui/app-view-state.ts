@@ -49,6 +49,8 @@ export type AppViewState = {
   password: string;
   tab: Tab;
   onboarding: boolean;
+  welcomeAccepted: boolean;
+  acceptWelcome: () => void;
   basePath: string;
   connected: boolean;
   theme: ThemeMode;

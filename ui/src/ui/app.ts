@@ -60,7 +60,7 @@ import type { ExecApprovalsFile, ExecApprovalsSnapshot } from "./controllers/exe
 import type { SkillMessage } from "./controllers/skills.ts";
 import type { GatewayBrowserClient, GatewayHelloOk } from "./gateway.ts";
 import type { Tab } from "./navigation.ts";
-import { loadSettings, type UiSettings } from "./storage.ts";
+import { loadSettings, loadWelcomeAccepted, saveWelcomeAccepted, type UiSettings } from "./storage.ts";
 import type { ResolvedTheme, ThemeMode } from "./theme.ts";
 import type {
   AgentsListResult,
@@ -121,6 +121,7 @@ export class OpenClawApp extends LitElement {
   @state() password = "";
   @state() tab: Tab = "chat";
   @state() onboarding = resolveOnboardingMode();
+  @state() welcomeAccepted = loadWelcomeAccepted();
   @state() connected = false;
   @state() theme: ThemeMode = this.settings.theme ?? "system";
   @state() themeResolved: ResolvedTheme = "dark";
@@ -608,6 +609,11 @@ export class OpenClawApp extends LitElement {
     const newRatio = Math.max(0.4, Math.min(0.7, ratio));
     this.splitRatio = newRatio;
     this.applySettings({ ...this.settings, splitRatio: newRatio });
+  }
+
+  acceptWelcome() {
+    saveWelcomeAccepted();
+    this.welcomeAccepted = true;
   }
 
   render() {
