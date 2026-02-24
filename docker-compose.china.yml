@@ -1,0 +1,57 @@
+# ============================================================
+# 舟岱自动化小助手 - Docker Compose 国内版
+# 使用方法：docker compose -f docker-compose.china.yml up -d
+# ============================================================
+
+services:
+  zhoudai:
+    # 优先用预构建镜像；如需本地构建，注释 image 行，取消 build 注释
+    image: zhoudai-assistant:latest
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.china
+
+    container_name: zhoudai-assistant
+    restart: unless-stopped
+
+    ports:
+      # 左边是宿主机端口，右边是容器端口，可按需修改左边
+      - "18788:18788"
+
+    volumes:
+      # 持久化数据目录（配置、会话、日志）
+      - zhoudai_data:/home/node/.zhoudai
+      # 如需挂载本地配置文件，取消下面注释并修改路径
+      # - ./zhoudai.json:/home/node/.zhoudai/zhoudai.json:ro
+
+    environment:
+      # ── 必填：至少配置一个 AI API Key ──────────────────────
+      # 国内推荐使用 OpenAI 兼容接口（如 DeepSeek、通义千问等）
+      # 直接在此处填写，或使用 .env 文件
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      # 国内 AI 服务（OpenAI 兼容格式）
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+
+      # ── 网关配置 ───────────────────────────────────────────
+      - ZHOUDAI_GATEWAY_TOKEN=${ZHOUDAI_GATEWAY_TOKEN:-请修改为随机密钥}
+      - NODE_ENV=production
+
+      # ── 代理设置（如公司有代理需求）───────────────────────
+      # - HTTP_PROXY=http://proxy.company.com:8080
+      # - HTTPS_PROXY=http://proxy.company.com:8080
+
+    # 日志限制，防止磁盘撑满
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+volumes:
+  zhoudai_data:
+    driver: local
+
+networks:
+  default:
+    name: zhoudai-network
